@@ -1,3 +1,39 @@
-body{
-    background: red;
+.restaurant-card {
+  display: flex;
+  padding: 1em 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.restaurant-card:hover {
+  background-color: #eee;
+}
+
+.photo {
+  width: 200px;
+  margin-right: 1em;
+}
+
+.restaurant-info {
+  display: none;
+}
+
+.modal {
+  display: none;
+  width: 300px;
+  height: 300px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0 15px -2px #666;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 250px;
+  margin-top: -125px;
+  margin-left: -125px;
+}
+
+.modal-open {
+  display: block;
 }
