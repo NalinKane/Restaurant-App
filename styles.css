@@ -32,6 +32,9 @@
   margin-left: -125px;
 }
 
+.inside-restaurant-info {
+    overflow: scroll;
+}
 .modal-open {
   display: block;
 }
