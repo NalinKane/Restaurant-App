@@ -26,10 +26,16 @@ getLocationButton.addEventListener(`click`, event => {
   }
 });
 
+function clearModalData(event){
+  restaurantContent
+};
+
 function openModal(event) {
   const targetID = event.target.getAttribute("data-id");
   const restaurantCard = document.querySelector(`#${targetID}`);
   console.log(restaurantCard);
+
+  clearModalData();
 
   const restaurantContent = restaurantCard.querySelector(
     ".inside-restaurant-info"
@@ -38,10 +44,14 @@ function openModal(event) {
   modalContent.append(restaurantContent);
 
   restaurantInfoModal.classList.add("modal-open");
+  
+  console.log(restaurantInfoModal);
+  console.log(restaurantContent);
 }
 
 function closeModal() {
   console.log("modal closed");
+  clearModalData();
   restaurantInfoModal.classList.remove("modal-open");
 }
 
@@ -80,10 +90,10 @@ searchButton.addEventListener(`click`, event => {
             <div class="restaurant-card" id="restaurant-${id}">
                 <img src="${featured_image}" class="photo" title="Photo of ${name}" />
                 <div class="content">
-                    <h2>${name}</h2>
-                    <p class="phone">Call on : ${phone_numbers}</p>
-                    <p class="rating">Avg.Rating ${user_rating.aggregate_rating}</p>
-                    <button class="open-more-info" data-id="restaurant-${id}">View more</button>
+                    <h2 class="card-text card-title">${name}</h2>
+                    <p class="card-text phone">Call on : ${phone_numbers}</p>
+                    <p class="card-text rating">Avg.Rating ${user_rating.aggregate_rating}</p>
+                    <button class="open-more-info button" data-id="restaurant-${id}">View more</button>
                 </div>
                 <div class="restaurant-info">
                     <div class="inside-restaurant-info">
