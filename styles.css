@@ -19,15 +19,19 @@
 
 .modal {
   display: none;
+
   width: 200px;
   height: 200px;
+
   background: white;
   border-radius: 10px;
   box-shadow: 0px 0 15px -2px #666;
   padding: 1em;
+
   position: fixed;
   top: 50%;
   left: 50%;
+
   margin-top: -125px;
   margin-left: -125px;
 }
@@ -35,6 +39,7 @@
 .inside-restaurant-info {
     overflow: scroll;
 }
+
 .modal-open {
   display: block;
 }
