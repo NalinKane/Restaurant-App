@@ -33,16 +33,18 @@ function openModal(event) {
 
   const restaurantContent = restaurantCard.querySelector(
     ".inside-restaurant-info"
-  );
+  ).cloneNode(true);
   const modalContent = document.querySelector("#modal-content");
-  modalContent.append(restaurantContent);
+    modalContent.append(restaurantContent);
 
   restaurantInfoModal.classList.add("modal-open");
 }
 
 function closeModal() {
-  console.log("modal closed");
+  
   restaurantInfoModal.classList.remove("modal-open");
+  const modalContent = document.querySelector("#modal-content");
+  modalContent.innerHTML = "";
 }
 
 document.addEventListener("click", function(event) {
@@ -54,6 +56,8 @@ document.addEventListener("click", function(event) {
 modalClose.addEventListener("click", function(event) {
   event.preventDefault();
   closeModal();
+  
+  
 });
 
 searchButton.addEventListener(`click`, event => {
