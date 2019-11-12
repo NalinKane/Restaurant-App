@@ -6,30 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Geocoding & search</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="styles.css">
     <style>
         #map {
             height: 400px;
             width: 100%;
         }
     </style>
-
 </head>
 
 <body>
-    <button id="get-location">Get your location</button>
-    <button id="search-by-location">Search</button>
+    <button class="button" id="get-location">Get your location</button>
+    <button class="button" id="search-by-location">Search</button>
     <div id="restaurant-returned"></div>
     <div id="modal-restaurant-info" class="modal">
-        <div id="close-modal">x</div>
+        <button class="close-modal" id="close-modal">CLOSE</button>
         <div id="modal-content"></div>
-        <h3> Google Maps </h3>
-        <!--The div element for the map -->
-        <div id="map"></div>
+    </div>
+    <div id="map"></div>
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap">
-        </script>
-        <script src="script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap">
+    </script>
+    <script src="map.js"></script>
+
 </body>
+<script type="text/javascript" src="script.js"></script>
+
 
 </html>
