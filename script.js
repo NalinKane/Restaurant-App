@@ -87,11 +87,10 @@ searchButton.addEventListener(`click`, event => {
             <div class="restaurant-card" id="restaurant-${id}">
                 <img src="${featured_image}" class="photo" title="Photo of ${name}" />
                 <div class="content">
-                    <h2>${name}</h2>
-                    <p class="phone">Call on : ${phone_numbers}</p>
-                    <p class="rating">Avg.Rating ${user_rating.aggregate_rating}</p>
-                    <button class="open-more-info" data-id="restaurant-${id}">View more</button>
-                </div>
+                <h2 class="card-text card-title">${name}</h2>
+                <p class="card-text phone">Call on : ${phone_numbers}</p>
+                <p class="card-text rating">Avg.Rating ${user_rating.aggregate_rating}</p>
+                <button class="open-more-info button" data-id="restaurant-${id}">View more</button>                </div>
                 <div class="restaurant-info">
                     <div class="inside-restaurant-info">
                         <p class="couisine">Type: ${cuisines}</p>
