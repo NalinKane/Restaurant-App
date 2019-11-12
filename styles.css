@@ -1,73 +1,72 @@
 .restaurant-card {
-  display: flex;
-  padding: 1em 0;
-  border-bottom: 4px solid #ddd;
-  border-top: 4px solid #ddd;
-  border-radius: 30px;
-  padding: 5px;
-  margin-bottom: 15px;
+    display: flex;
+    padding: 1em 0;
+    border-bottom: 4px solid #ddd;
+    border-top: 4px solid #ddd;
+    border-radius: 30px;
+    padding: 5px;
+    margin-bottom: 15px;
 }
 
-.content{
-  display: 100%;
+.content {
+    display: 100%;
 }
 
 .restaurant-card:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 .photo {
-  border-radius: 20px;
-  padding: 10px;
-  width: 175px;
-  max-height: 200px;
-  margin-right: 1em;
+    border-radius: 20px;
+    padding: 10px;
+    width: 175px;
+    max-height: 200px;
+    margin-right: 1em;
 }
 
-.button{
-  padding: 5px;
-  background-color: white;
-  border-radius:10px;
+.button {
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .button:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
 
-.card-text{
-  text-align: center;
+.card-text {
+    text-align: center;
 }
 
 .restaurant-info {
-  display: none;
+    display: none;
 }
 
 .modal {
-  display: none;
-  width: 80%;
-  height: 80%;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0px 0 15px -2px #666;
-  padding: 1em;
-  position: fixed;
-  top: 40%;
-  left: 40%;
-  transform: translate(-40%, -40%);
+    display: none;
+    width: 80%;
+    height: 80%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0 15px -2px #666;
+    padding: 1em;
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    transform: translate(-40%, -40%);
 }
 
 .inside-restaurant-info {
-  padding: 1em;
+    padding: 1em;
     overflow: auto;
 }
 
 .modal-open {
-  display: block;
+    display: block;
 }
 
 .close-modal {
-  background: linear-gradient(to right, 
-  red 20%, orange 20% 40%, yellow 40% 60%, green 60% 80%, blue 80%);
-  color: white;
-  padding: .5em;
+    background: linear-gradient(to right, red 20%, orange 20% 40%, yellow 40% 60%, green 60% 80%, blue 80%);
+    color: white;
+    padding: .5em;
 }
