@@ -14,7 +14,7 @@ getLocationButton.addEventListener(`click`, event => {
       userLatitude = position.coords.latitude;
       userLongitude = position.coords.longitude;
       fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${userLatitude},${userLongitude}&key=AIzaSyDUU-niRiyVVeS9DtXJswEOVHjiBJevfno`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${userLatitude},${userLongitude}&key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ`
       )
         .then(response => response.json())
         .then(data => {
@@ -31,24 +31,19 @@ function openModal(event) {
   const restaurantCard = document.querySelector(`#${targetID}`);
   console.log(restaurantCard);
 
-  const restaurantContent = restaurantCard.querySelector(
-    ".inside-restaurant-info"
-
-  ).cloneNode(true);
+  const restaurantContent = restaurantCard
+    .querySelector(".inside-restaurant-info")
+    .cloneNode(true);
   const modalContent = document.querySelector("#modal-content");
-    modalContent.append(restaurantContent);
-
+  modalContent.append(restaurantContent);
 
   restaurantInfoModal.classList.add("modal-open");
 }
 
 function closeModal() {
-
-  
   restaurantInfoModal.classList.remove("modal-open");
   const modalContent = document.querySelector("#modal-content");
   modalContent.innerHTML = "";
-
 }
 
 document.addEventListener("click", function(event) {
@@ -60,7 +55,6 @@ document.addEventListener("click", function(event) {
 modalClose.addEventListener("click", function(event) {
   event.preventDefault();
   closeModal();
-
 });
 
 searchButton.addEventListener(`click`, event => {
