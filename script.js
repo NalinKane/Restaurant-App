@@ -6,7 +6,6 @@ const restaurantsReturned = document.querySelector(`#restaurant-returned`);
 const restaurantInfoModal = document.querySelector("#modal-restaurant-info");
 const modalToggle = document.querySelector("#open-modal");
 const modalClose = document.querySelector("#close-modal");
-
 let currentLat;
 let currentLong;
 
@@ -36,24 +35,6 @@ function clearResults (){
             restaurantsReturned.removeChild(restaurantsReturned.firstChild);
         };      
 }};
-
-// getLocationButton.addEventListener(`click`, event => {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(function(position) {
-//             userLatitude = position.coords.latitude;
-//             userLongitude = position.coords.longitude;
-//             fetch(
-//                     `https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&latlng=${userLatitude},${userLongitude}`
-//                 )
-//                 .then(response => response.json())
-//                 .then(data => {
-//                     console.log(data);
-//                 });
-//         });
-//     } else {
-//         getLocationButton.innerHTML = "N/A";
-//     }
-// });
 
 function openModal(event) {
     const targetID = event.target.getAttribute("data-id");
