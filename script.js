@@ -67,7 +67,7 @@ searchDistance.addEventListener(`click`, event => {
     fetch(
             `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=real-distance`
         )
-        .then(repsonse => repsonse.json())
+        .then(response => response.json())
         .then(({ restaurants }) => {
             restaurants.map(({ restaurant }) => {
                 const {
@@ -110,7 +110,7 @@ searchPrice.addEventListener(`click`, event => {
     fetch(
             `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=cost`
         )
-        .then(repsonse => repsonse.json())
+        .then(response => response.json())
         .then(({ restaurants }) => {
             restaurants.map(({ restaurant }) => {
                 const {
@@ -153,7 +153,7 @@ searchRating.addEventListener(`click`, event => {
     fetch(
             `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=rating`
         )
-        .then(repsonse => repsonse.json())
+        .then(response => response.json())
         .then(({ restaurants }) => {
             restaurants.map(({ restaurant }) => {
                 const {
