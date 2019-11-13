@@ -7,8 +7,28 @@ const restaurantInfoModal = document.querySelector("#modal-restaurant-info");
 const modalToggle = document.querySelector("#open-modal");
 const modalClose = document.querySelector("#close-modal");
 
-let userLatitude = ``;
-let userLongitude = ``;
+let currentLat;
+let currentLong;
+
+function initMap() {
+    let location = new Object();
+    navigator.geolocation.getCurrentPosition(function(pos) {
+        location.lat = pos.coords.latitude;
+        location.long = pos.coords.longitude;
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: location.lat, lng: location.long },
+            zoom: 15
+        });
+
+        currentLat = location.lat
+        currentLong = location.long
+        console.log(currentLat)
+        console.log(currentLong)
+        var currentLocation = { lat: location.lat, lng: location.long };
+        const searchButton = document.querySelector('#search-by-location');
+        var marker = new google.maps.Marker({ position: currentLocation, map: map });
+    });
+};
 
 function clearResults (){
     if (restaurantsReturned.hasChildNodes()){
@@ -17,23 +37,23 @@ function clearResults (){
         };      
 }};
 
-getLocationButton.addEventListener(`click`, event => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            userLatitude = position.coords.latitude;
-            userLongitude = position.coords.longitude;
-            fetch(
-                    `https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&latlng=${userLatitude},${userLongitude}`
-                )
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                });
-        });
-    } else {
-        getLocationButton.innerHTML = "N/A";
-    }
-});
+// getLocationButton.addEventListener(`click`, event => {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(function(position) {
+//             userLatitude = position.coords.latitude;
+//             userLongitude = position.coords.longitude;
+//             fetch(
+//                     `https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&latlng=${userLatitude},${userLongitude}`
+//                 )
+//                 .then(response => response.json())
+//                 .then(data => {
+//                     console.log(data);
+//                 });
+//         });
+//     } else {
+//         getLocationButton.innerHTML = "N/A";
+//     }
+// });
 
 function openModal(event) {
     const targetID = event.target.getAttribute("data-id");
@@ -67,7 +87,7 @@ modalClose.addEventListener("click", function(event) {
 searchDistance.addEventListener(`click`, event => {
     clearResults ()
     fetch(
-            `https://developers.zomato.com/api/v2.1/search?lat=${userLatitude}&lon=${userLongitude}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=real-distance`
+            `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=real-distance`
         )
         .then(repsonse => repsonse.json())
         .then(({ restaurants }) => {
@@ -111,7 +131,7 @@ searchDistance.addEventListener(`click`, event => {
 searchPrice.addEventListener(`click`, event => {
     clearResults ()
     fetch(
-            `https://developers.zomato.com/api/v2.1/search?lat=${userLatitude}&lon=${userLongitude}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=cost`
+            `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=cost`
         )
         .then(repsonse => repsonse.json())
         .then(({ restaurants }) => {
@@ -155,7 +175,7 @@ searchPrice.addEventListener(`click`, event => {
 searchRating.addEventListener(`click`, event => {
     clearResults ()
     fetch(
-            `https://developers.zomato.com/api/v2.1/search?lat=${userLatitude}&lon=${userLongitude}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=rating`
+            `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=rating`
         )
         .then(repsonse => repsonse.json())
         .then(({ restaurants }) => {
