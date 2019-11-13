@@ -21,8 +21,6 @@ function initMap() {
 
         currentLat = location.lat
         currentLong = location.long
-        console.log(currentLat)
-        console.log(currentLong)
         var currentLocation = { lat: location.lat, lng: location.long };
         const searchButton = document.querySelector('#search-by-location');
         var marker = new google.maps.Marker({ position: currentLocation, map: map });
@@ -39,7 +37,6 @@ function clearResults (){
 function openModal(event) {
     const targetID = event.target.getAttribute("data-id");
     const restaurantCard = document.querySelector(`#${targetID}`);
-    console.log(restaurantCard);
     const restaurantContent = restaurantCard.querySelector(
         ".inside-restaurant-info"
     ).cloneNode(true);
@@ -72,7 +69,6 @@ searchDistance.addEventListener(`click`, event => {
         )
         .then(repsonse => repsonse.json())
         .then(({ restaurants }) => {
-            console.log(restaurants);
             restaurants.map(({ restaurant }) => {
                 const {
                     name,
@@ -116,7 +112,6 @@ searchPrice.addEventListener(`click`, event => {
         )
         .then(repsonse => repsonse.json())
         .then(({ restaurants }) => {
-            console.log(restaurants);
             restaurants.map(({ restaurant }) => {
                 const {
                     name,
@@ -160,7 +155,6 @@ searchRating.addEventListener(`click`, event => {
         )
         .then(repsonse => repsonse.json())
         .then(({ restaurants }) => {
-            console.log(restaurants);
             restaurants.map(({ restaurant }) => {
                 const {
                     name,
