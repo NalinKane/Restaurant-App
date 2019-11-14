@@ -1,3 +1,10 @@
+#map {
+  height: 400px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .restaurant-card {
     display: flex;
     padding: 1em 0;
@@ -6,6 +13,7 @@
     border-radius: 30px;
     padding: 5px;
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .content {
