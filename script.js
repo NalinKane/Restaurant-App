@@ -18,7 +18,8 @@ function initMap() {
     location.long = pos.coords.longitude;
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: location.lat, lng: location.long },
-      zoom: 15
+      zoom: 11
+
     });
 
     currentLat = location.lat;
@@ -52,6 +53,7 @@ function openModal(event) {
   const modalContent = document.querySelector("#modal-content");
   modalContent.append(restaurantContent);
 
+
   restaurantInfoModal.classList.add("modal-open");
 }
 
@@ -76,6 +78,7 @@ searchDistance.addEventListener(`click`, event => {
   clearResults();
   fetch(
     `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=real-distance`
+
   )
     .then(response => response.json())
     .then(({ restaurants }) => {
@@ -121,6 +124,21 @@ function createRestaurantsNodes(restaurants) {
       user_rating,
       id
     } = restaurant;
+
+    function setMarkers(map, location) {
+
+    let restaurantLat = Number(restaurant.location.latitude)
+    let restaurantLong = Number(restaurant.location.longitude)
+
+    let restaurantLocation = { lat: restaurantLat, lng: restaurantLong };
+
+    var image = 'http://maps.google.com/mapfiles/kml/pal2/icon40.png';
+    var restaurantMarker = new google.maps.Marker({ position: restaurantLocation, map: map, icon: image });
+
+  };
+    
+
+    setMarkers(map, location);
 
     const restaurantNode = `
             <div class="restaurant-card" id="restaurant-${id}">
