@@ -6,6 +6,7 @@ const restaurantInfoModal = document.querySelector("#modal-restaurant-info");
 const modalToggle = document.querySelector("#open-modal");
 const modalClose = document.querySelector("#close-modal");
 const overlay = document.querySelector("#overlay");
+// let map = document.querySelector("#map");
 let currentLat;
 let currentLong;
 
@@ -18,7 +19,7 @@ function initMap() {
     location.long = pos.coords.longitude;
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: location.lat, lng: location.long },
-      zoom: 15
+      zoom: 12
     });
 
     currentLat = location.lat;
@@ -136,6 +137,35 @@ searchPrice.addEventListener(`click`, () => {
           user_rating,
           id
         } = restaurant;
+
+        // let restaurantLat = Number(restaurant.location.latitude)
+        //         let restaurantLong = Number(restaurant.location.longitude)
+        //         console.log(restaurantLat)
+
+        //         // restaurants.forEach((restaurant) => {
+        //             let restaurantLocation = { lat: restaurantLat, lng: restaurantLong };
+        //             console.log(restaurantLocation)
+        //             let restaurantMarker = new google.maps.Marker({ position: restaurantLocation, map: map });
+                
+        //             let image = 'http://maps.google.com/mapfiles/kml/pal2/icon40.png'
+
+        //             setMarkers(map, locations);
+        //         // });
+
+                function setMarkers(map, location) {
+                    let restaurantLat = Number(restaurant.location.latitude)
+                    let restaurantLong = Number(restaurant.location.longitude)
+                    
+                    // restaurants.forEach((restaurant) => {
+                        let restaurantLocation = { lat: restaurantLat, lng: restaurantLong };
+
+                        let restaurantMarker = new google.maps.Marker({ position: restaurantLocation, map: map });
+                    
+                    
+                        let image = 'http://maps.google.com/mapfiles/kml/pal2/icon40.png'
+                    };
+
+                setMarkers(map, location);
 
         const restaurantNode = `
                 <div class="restaurant-card" id="restaurant-${id}">
