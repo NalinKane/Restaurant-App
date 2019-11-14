@@ -13,12 +13,19 @@
     <button class="button" id="search-by-location">Search by distance</button>
     <button class="button" id="search-by-price">Search by price</button>
     <button class="button" id="search-by-rating">Search by rating</button>
-    <button class="button" id="search-weather">Weather</button>
+    <button class="button" id="get-temp">Weather</button>
     <div id="map"></div>
     <div id="restaurant-returned"></div>
     <div id="modal-restaurant-info" class="modal">
         <button class="close-modal" id="close-modal">CLOSE</button>
         <div id="modal-content"></div>
+    </div>
+    <div id="id01" class="modal-weather">
+        <div class="modal-content-weather">
+            <span class="close-button-weather">&times;</span>
+            <p id="weatherReport">Weather Report</p>
+        </div>
+
     </div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"></script>
     <script src="map.js"></script>

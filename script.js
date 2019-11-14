@@ -26,12 +26,13 @@ function initMap() {
     });
 };
 
-function clearResults (){
-    if (restaurantsReturned.hasChildNodes()){
+function clearResults() {
+    if (restaurantsReturned.hasChildNodes()) {
         while (restaurantsReturned.firstChild) {
             restaurantsReturned.removeChild(restaurantsReturned.firstChild);
-        };      
-}};
+        };
+    }
+};
 
 function openModal(event) {
     const targetID = event.target.getAttribute("data-id");
@@ -62,7 +63,7 @@ modalClose.addEventListener("click", function(event) {
 });
 
 searchDistance.addEventListener(`click`, event => {
-    clearResults ()
+    clearResults()
     fetch(
             `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=real-distance`
         )
@@ -105,7 +106,7 @@ searchDistance.addEventListener(`click`, event => {
 });
 
 searchPrice.addEventListener(`click`, event => {
-    clearResults ()
+    clearResults()
     fetch(
             `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=cost`
         )
@@ -148,7 +149,7 @@ searchPrice.addEventListener(`click`, event => {
 });
 
 searchRating.addEventListener(`click`, event => {
-    clearResults ()
+    clearResults()
     fetch(
             `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=rating`
         )
@@ -189,3 +190,45 @@ searchRating.addEventListener(`click`, event => {
             });
         });
 });
+
+// weather events
+let weatherBtn = document.querySelector(`#get-temp`)
+let modalW = document.querySelector(".modal-weather")
+let closeBtn = document.querySelector(".close-button-weather")
+
+closeBtn.addEventListener('click', closeModal);
+
+function closeModal() {
+    modalW.style.display = "none";
+}
+
+window.addEventListener('click', clickOutside);
+
+function clickOutside(e) {
+    if (e.target == modalW) {
+        modalW.style.display = "none";
+    }
+}
+
+
+weatherBtn.addEventListener("click", event => {
+    event.preventDefault();
+
+    fetch(`https://api.aerisapi.com/observations//observations/within?p=${currentLat},${currentLong}&radius=50mi&?&format=json&filter=allstations&limit=1&client_id=585ogEC4h46JkqCAispBp&client_secret=ZNE2lts94FU5sr2iMubHUpWAlwlUsiWZBXVmDBSO`)
+        .then(response => response.json())
+        .then(response => {
+
+            const pElement = document.querySelector('#weatherReport');
+            const weather = response.response.ob.tempC;
+            const climate = response.response.ob.weather
+            const windChill = response.response.ob.windchillC
+            const place = response.response.place.city
+
+            pElement.textContent = `Place: ${place} 
+                Temperature is ${weather}°C  and the weather today is ${climate}.
+                The wind chill is ${windChill}°C.`
+            modalW.style.display = "block";
+
+
+        });
+})

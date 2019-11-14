@@ -1,8 +1,8 @@
 #map {
-  height: 400px;
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+    height: 400px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .restaurant-card {
@@ -77,4 +77,52 @@
     background: linear-gradient(to right, red 20%, orange 20% 40%, yellow 40% 60%, green 60% 80%, blue 80%);
     color: white;
     padding: .5em;
+}
+
+
+/* css for weather modal */
+
+.modal-weather {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 60%;
+    width: 50%;
+    background-color: rgba(248, 246, 252, 0.5);
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25 0s, transform 0.25s;
+    display: none;
+}
+
+.modal-content-weather {
+    background-color: lightgrey;
+    z-index: 1;
+    text-align: center;
+    position: absolute;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 30px 0 rgba(0, 0, 0, 0.2);
+    margin: auto;
+    top: 25%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 1.5rem;
+    width: 50%;
+    border-radius: 0.5rem;
+}
+
+.close-button-weather {
+    width: 8%;
+    font-size: 20px;
+    float: right;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    background-color: rgb(138, 134, 134);
+}
+
+.close-button-weather:hover,
+.close-button-weather:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
