@@ -18,7 +18,7 @@ function initMap() {
     location.long = pos.coords.longitude;
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: location.lat, lng: location.long },
-      zoom: 15
+      zoom: 11
     });
 
     currentLat = location.lat;
@@ -126,17 +126,13 @@ function createRestaurantsNodes(restaurants) {
 
     let restaurantLat = Number(restaurant.location.latitude)
     let restaurantLong = Number(restaurant.location.longitude)
-    console.log(restaurantLat)
 
-    // restaurants.forEach((restaurant) => {
     let restaurantLocation = { lat: restaurantLat, lng: restaurantLong };
-    console.log(restaurantLocation)
-    let restaurantMarker = new google.maps.Marker({ position: restaurantLocation, map: map });
-        
-        
-    let image = 'http://maps.google.com/mapfiles/kml/pal2/icon40.png'
-        
-    };
+
+    var image = 'http://maps.google.com/mapfiles/kml/pal2/icon40.png';
+    var restaurantMarker = new google.maps.Marker({ position: restaurantLocation, map: map, icon: image });
+
+  };
     
     setMarkers(map, location);
 
