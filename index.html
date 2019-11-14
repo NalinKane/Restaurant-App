@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,21 @@
     <title>Geocoding & search</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <button class="button" id="search-by-location">Search by distance</button>
     <button class="button" id="search-by-price">Search by price</button>
     <button class="button" id="search-by-rating">Search by rating</button>
+    <button class="button" id="search-weather">Weather</button>
     <div id="map"></div>
     <div id="restaurant-returned"></div>
     <div id="modal-restaurant-info" class="modal">
         <button class="close-modal" id="close-modal">CLOSE</button>
         <div id="modal-content"></div>
-    </div> 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"></script>
-  <script src="map.js"></script>
+    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"></script>
+    <script src="map.js"></script>
 </body>
 <script type="text/javascript" src="script.js"></script>
+
 </html>
