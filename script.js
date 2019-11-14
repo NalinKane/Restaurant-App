@@ -1,4 +1,3 @@
-const getLocationButton = document.querySelector(`#get-location`);
 const searchDistance = document.querySelector(`#search-by-location`);
 const searchPrice = document.querySelector(`#search-by-price`);
 const searchRating = document.querySelector(`#search-by-rating`);
