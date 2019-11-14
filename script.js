@@ -80,39 +80,7 @@ searchDistance.addEventListener(`click`, event => {
     .then(response => response.json())
     .then(({ restaurants }) => {
       allRestaurants = restaurants;
-      restaurants.map(({ restaurant }) => {
-        const {
-          name,
-          featured_image,
-          cuisines,
-          average_cost_for_two,
-          location,
-          timings,
-          phone_numbers,
-          user_rating,
-          id
-        } = restaurant;
-
-        const restaurantNode = `
-                <div class="restaurant-card" id="restaurant-${id}">
-                <img src="${featured_image}" class="photo" title="Photo of ${name}" />
-                    <div class="content">
-                        <h2 class="card-text card-title">${name}</h2>
-                        <p class="card-text phone">Call on : ${phone_numbers}</p>
-                        <p class="card-text rating">Avg.Rating ${user_rating.aggregate_rating}</p>
-                        <button class="open-more-info button" data-id="restaurant-${id}">View more</button>                </div>
-                    <div class="restaurant-info">
-                        <div class="inside-restaurant-info">
-                            <p class="couisine">Type: ${cuisines}</p>
-                            <p class="cost-for-two">Avg. cost for two: ${average_cost_for_two}</p>
-                            <p class="address">${location.address}</p>
-                            <p class="timings">${timings}</p>
-                        </div>
-                    </div>
-                </div>
-        `;
-        restaurantsReturned.innerHTML += restaurantNode;
-      });
+      createRestaurantsNodes(restaurants);
     });
 });
 
@@ -124,40 +92,7 @@ searchPrice.addEventListener(`click`, () => {
     .then(response => response.json())
     .then(({ restaurants }) => {
       allRestaurants = restaurants;
-      restaurants.map(({ restaurant }) => {
-        const {
-          name,
-          featured_image,
-          cuisines,
-          average_cost_for_two,
-          location,
-          timings,
-          phone_numbers,
-          user_rating,
-          id
-        } = restaurant;
-
-        const restaurantNode = `
-                <div class="restaurant-card" id="restaurant-${id}">
-                <img src="${featured_image}" class="photo" title="Photo of ${name}" />
-                    <div class="content">
-                        <h2 class="card-text card-title">${name}</h2>
-                        <p class="card-text phone">Call on : ${phone_numbers}</p>
-                        <p class="card-text rating">Avg.Rating ${user_rating.aggregate_rating}</p>
-                        <button class="open-more-info button" data-id="restaurant-${id}">View more</button>
-                    </div>
-                    <div class="restaurant-info">
-                        <div class="inside-restaurant-info">
-                            <p class="couisine">Type: ${cuisines}</p>
-                            <p class="cost-for-two">Avg. cost for two: ${average_cost_for_two}</p>
-                            <p class="address">${location.address}</p>
-                            <p class="timings">${timings}</p>
-                        </div>
-                    </div>
-                </div>
-        `;
-        restaurantsReturned.innerHTML += restaurantNode;
-      });
+      createRestaurantsNodes(restaurants);
     });
 });
 
@@ -169,55 +104,12 @@ searchRating.addEventListener(`click`, () => {
     .then(response => response.json())
     .then(({ restaurants }) => {
       allRestaurants = restaurants;
-      restaurants.map(({ restaurant }) => {
-        const {
-          name,
-          featured_image,
-          cuisines,
-          average_cost_for_two,
-          location,
-          timings,
-          phone_numbers,
-          user_rating,
-          id
-        } = restaurant;
-
-        const restaurantNode = `
-                <div class="restaurant-card" id="restaurant-${id}">
-                <img src="${featured_image}" class="photo" title="Photo of ${name}" />
-                    <div class="content">
-                        <h2 class="card-text card-title">${name}</h2>
-                        <p class="card-text phone">Call on : ${phone_numbers}</p>
-                        <p class="card-text rating">Avg.Rating ${user_rating.aggregate_rating}</p>
-                        <button class="open-more-info button" data-id="restaurant-${id}">View more</button>
-                    </div>
-                    <div class="restaurant-info">
-                        <div class="inside-restaurant-info">
-                            <p class="couisine">Type: ${cuisines}</p>
-                            <p class="cost-for-two">Avg. cost for two: ${average_cost_for_two}</p>
-                            <p class="address">${location.address}</p>
-                            <p class="timings">${timings}</p>
-                        </div>
-                    </div>
-                </div>
-        `;
-        restaurantsReturned.innerHTML += restaurantNode;
-      });
+      createRestaurantsNodes(restaurants);
     });
 });
 
-const filterBy = document.querySelector("#filterBy");
-
-filterBy.addEventListener("click", () => {
-  const filterInput = document.querySelector("#filterValue");
-  const cuisine = filterInput.value;
-
-  const filtered = filterRestaurantBy(cuisine);
-  console.log(`I've found ${filtered.length} ${cuisine} restaurants`, filtered);
-
-  restaurantsReturned.innerHTML = "";
-
-  filtered.map(({ restaurant }) => {
+function createRestaurantsNodes(restaurants) {
+  restaurants.map(({ restaurant }) => {
     const {
       name,
       featured_image,
@@ -251,6 +143,18 @@ filterBy.addEventListener("click", () => {
     `;
     restaurantsReturned.innerHTML += restaurantNode;
   });
+}
+const filterBy = document.querySelector("#filterBy");
+
+filterBy.addEventListener("click", () => {
+  const filterInput = document.querySelector("#filterValue");
+  const cuisine = filterInput.value;
+
+  const filtered = filterRestaurantBy(cuisine);
+  console.log(`I've found ${filtered.length} ${cuisine} restaurants`, filtered);
+
+  restaurantsReturned.innerHTML = "";
+  createRestaurantsNodes(filtered);
 });
 
 function filterRestaurantBy(cuisine) {
