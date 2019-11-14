@@ -19,6 +19,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: location.lat, lng: location.long },
       zoom: 11
+
     });
 
     currentLat = location.lat;
@@ -52,6 +53,7 @@ function openModal(event) {
   const modalContent = document.querySelector("#modal-content");
   modalContent.append(restaurantContent);
 
+
   restaurantInfoModal.classList.add("modal-open");
 }
 
@@ -76,6 +78,7 @@ searchDistance.addEventListener(`click`, event => {
   clearResults();
   fetch(
     `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=real-distance`
+
   )
     .then(response => response.json())
     .then(({ restaurants }) => {
@@ -134,6 +137,7 @@ function createRestaurantsNodes(restaurants) {
 
   };
     
+
     setMarkers(map, location);
 
     const restaurantNode = `
