@@ -143,7 +143,6 @@ function createRestaurantsNodes(restaurants) {
   };
     
     setMarkers(map, location);
-    
 
     const restaurantNode = `
             <div class="restaurant-card" id="restaurant-${id}">
