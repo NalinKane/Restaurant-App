@@ -192,9 +192,9 @@ let weatherBtn = document.querySelector(`#get-temp`)
 let modalW = document.querySelector(".modal-weather")
 let closeBtn = document.querySelector(".close-button-weather")
 
-closeBtn.addEventListener('click', closeModal);
+closeBtn.addEventListener('click', closeWeatherModal);
 
-function closeModal() {
+function closeWeatherModal() {
     modalW.style.display = "none";
 }
 
