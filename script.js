@@ -10,6 +10,7 @@ let currentLat;
 let currentLong;
 
 let allRestaurants = [];
+let restaurantMarkers = [];
 
 function initMap() {
   let location = new Object();
@@ -39,7 +40,10 @@ function clearResults() {
       restaurantsReturned.removeChild(restaurantsReturned.firstChild);
     }
   }
-}
+  for(let i = 0; i < restaurantMarkers.length; i++) {
+    restaurantMarkers[i].setMap(null);
+  }
+} 
 
 function openModal(event) {
   const targetID = event.target.getAttribute("data-id");
@@ -111,6 +115,7 @@ searchRating.addEventListener(`click`, () => {
     });
 });
 
+
 function createRestaurantsNodes(restaurants) {
   restaurants.map(({ restaurant }) => {
     const {
@@ -132,13 +137,13 @@ function createRestaurantsNodes(restaurants) {
 
     let restaurantLocation = { lat: restaurantLat, lng: restaurantLong };
 
-    var image = 'http://maps.google.com/mapfiles/kml/pal2/icon40.png';
-    var restaurantMarker = new google.maps.Marker({ position: restaurantLocation, map: map, icon: image });
-
+    let image = 'http://maps.google.com/mapfiles/kml/pal2/icon40.png';
+    let restaurantMarker = new google.maps.Marker({ position: restaurantLocation, map: map, icon: image });
+    restaurantMarkers.push(restaurantMarker);
   };
     
-
     setMarkers(map, location);
+    
 
     const restaurantNode = `
             <div class="restaurant-card" id="restaurant-${id}">
@@ -162,6 +167,7 @@ function createRestaurantsNodes(restaurants) {
     restaurantsReturned.innerHTML += restaurantNode;
   });
 }
+
 const filterBy = document.querySelector("#filterBy");
 
 filterBy.addEventListener("click", () => {
