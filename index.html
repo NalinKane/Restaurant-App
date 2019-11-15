@@ -4,25 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Geocoding & search</title>
+    <title>Restraunt search</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <button class="button" id="search-by-location">Search by distance</button>
-    <button class="button" id="search-by-price">Search by price</button>
-    <button class="button" id="search-by-rating">Search by rating</button>
-    <div id="map"></div>
+    <div class="main-content">
+      <div class="search-buttons">
+        <button class="button" id="search-by-location">Search by distance</button>
+        <button class="button" id="search-by-price">Search by price</button>
+        <button class="button" id="search-by-rating">Search by rating</button>
+      </div>
+      <div id="map"></div>
+      <div class="filter">
+        <input id="filterValue" type="text" />
+        <button id="filterBy">Filter</button>
+      </div>
+      <div id="restaurant-returned"></div>
 
-    <input id="filterValue" type="text" />
-    <button id="filterBy">Filter</button>
-
-    <div id="restaurant-returned"></div>
-
-    <div id="modal-restaurant-info" class="modal">
-      <button class="close-modal" id="close-modal">CLOSE</button>
-      <div id="modal-content"></div>
+      <div id="modal-restaurant-info" class="modal">
+        <button class="close-modal" id="close-modal">CLOSE</button>
+        <div id="modal-content"></div>
+      </div>
+      <div id="overlay"></div>
     </div>
-    <div id="overlay"></div>
   </body>
   <script
     defer

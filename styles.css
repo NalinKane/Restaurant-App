@@ -1,8 +1,29 @@
+*{
+  box-sizing: border-box;
+}
+
 #map {
   height: 400px;
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.main-content{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search-buttons{
+  display: flex;
+  justify-content: center;
+  margin: 12px;
+}
+
+.filter{
+  display: flex;
+  justify-content: center;
 }
 
 .restaurant-card {
@@ -13,7 +34,7 @@
   border-radius: 30px;
   padding: 5px;
   margin-bottom: 15px;
-  width: 100%;
+  align-content: stretch;
 }
 
 .content {
@@ -98,4 +119,43 @@
 
 #overlay.overlay-open {
   display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .restaurant-card {
+    display: flex;
+    flex-flow: row;
+    padding: 1em 0;
+    border-bottom: 4px solid #ddd;
+    border-top: 4px solid #ddd;
+    border-radius: 30px;
+    padding: 5px;
+    width: 45%;
+  }
+  .restaurant-returned{
+    display: flex;
+    justify-items: center;
+    flex-flow: row wrap;
+    width: 750px;
+  }
+  .search-buttons{
+    display: flex;
+    justify-content: center;
+  }
+  .main-content{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    max-width: 750px;
+    justify-self: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .filter{
+    display: flex;
+    justify-content: center;
+  }
+  #body{
+    background-color: #eee;
+  }
 }
