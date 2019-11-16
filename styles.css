@@ -157,11 +157,11 @@
     justify-content: center;
   }
   
-  }
+  
   .body {
     background-color: #ddd;
   }
-}
+
 
 @media screen and (min-width: 992px) {
   .restaurant-card {
