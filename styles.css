@@ -1,8 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
 #map {
   height: 400px;
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 12px;
 }
 
 .restaurant-card {
@@ -13,7 +29,7 @@
   border-radius: 30px;
   padding: 5px;
   margin-bottom: 15px;
-  width: 100%;
+  align-content: stretch;
 }
 
 .content {
@@ -34,12 +50,14 @@
 
 .button {
   padding: 5px;
-  background-color: white;
   border-radius: 10px;
+  background-color: #40ce6f;
+  color: white;
+  font-size: 16px;
 }
 
 .button:hover {
-  background-color: #eee;
+  background-color: #50ffb1;
 }
 
 .card-text {
@@ -75,15 +93,9 @@
 }
 
 .close-modal {
-  background: linear-gradient(
-    to right,
-    red 20%,
-    orange 20% 40%,
-    yellow 40% 60%,
-    green 60% 80%,
-    blue 80%
-  );
+  background-color: #40ce6f;
   color: white;
+  font-size: 14px;
   padding: 0.5em;
 }
 #overlay {
@@ -98,4 +110,97 @@
 
 #overlay.overlay-open {
   display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .restaurant-card {
+    display: flex;
+    flex-flow: row;
+    padding: 1em 0;
+    border-bottom: 4px solid #ddd;
+    border-top: 4px solid #ddd;
+    border-radius: 30px;
+    padding: 5px;
+    width: 45%;
+  }
+  #restaurant-returned {
+    display: flex;
+    justify-items: center;
+    flex-flow: row wrap;
+    width: 750px;
+    justify-content: space-around;
+  }
+  .search-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  .main-content {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    max-width: 750px;
+    justify-self: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .filters {
+    margin-bottom: 10px;
+    display: none;
+  }
+
+  .filters-open {
+    display: flex;
+    justify-content: center;
+  }
+
+  .body {
+    background-color: #ddd;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .restaurant-card {
+    display: flex;
+    flex-flow: row;
+    padding: 1em 0;
+    border-bottom: 4px solid #ddd;
+    border-top: 4px solid #ddd;
+    border-radius: 30px;
+    padding: 5px;
+    width: 30%;
+  }
+  #restaurant-returned {
+    display: flex;
+    justify-items: center;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .search-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  .main-content {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    max-width: 1100px;
+    justify-self: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .filters {
+    margin-bottom: 10px;
+    display: none;
+  }
+
+  .filters-open {
+    display: flex;
+    justify-content: center;
+  }
+
+  .body {
+    background-color: #ddd;
+  }
 }
