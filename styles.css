@@ -99,3 +99,11 @@
 #overlay.overlay-open {
   display: block;
 }
+.filters {
+  margin-bottom: 10px;
+  display: none;
+}
+
+.filters-open {
+  display: block;
+}
