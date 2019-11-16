@@ -4,27 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Geocoding & search</title>
+    <title>Restraunt search</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="weather.css" />
-  </head>
-
-  <body>
-    <button class="button" id="search-by-location">Search by distance</button>
-    <button class="button" id="search-by-price">Search by price</button>
-    <button class="button" id="search-by-rating">Search by rating</button>
-    <button class="button" id="get-temp">Weather</button>
-
-    <div id="map"></div>
-    <div class="filters">
-      <input id="filterValue" type="text" placeholder="e.g. indian" />
-      <button id="filterBy" class="button">Filter by cuisine</button>
-    </div>
-    <div id="restaurant-returned"></div>
-
-    <div id="modal-restaurant-info" class="modal">
-      <button class="close-modal" id="close-modal">CLOSE</button>
-      <div id="modal-content"></div>
+</head>
+<body>
+    <div class="main-content">
+        <div class="search-buttons">
+            <button class="button" id="search-by-location">Search by distance</button>
+            <button class="button" id="search-by-price">Search by price</button>
+            <button class="button" id="search-by-rating">Search by rating</button>
+            <button class="button" id="get-temp">Weather</button>
+        </div>
+        <div id="map"></div>
+        <div class="filter">
+            <input id="filterValue" type="text" placeholder="e.g. indian" />
+            <button id="filterBy" class="button">Filter by cuisine</button>
+        </div>
+        <div id="restaurant-returned"></div>
+        <div id="modal-restaurant-info" class="modal">
+            <button class="close-modal" id="close-modal">CLOSE</button>
+            <div id="modal-content"></div>
+        </div>
+        <div id="overlay"></div>
     </div>
     <div id="overlay"></div>
     <div id="id01" class="modal-weather">
@@ -40,9 +42,6 @@
       </div>
     </div>
   </body>
-  <script
-    defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"
-  ></script>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"></script>
   <script type="text/javascript" src="script.js"></script>
 </html>
