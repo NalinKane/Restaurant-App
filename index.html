@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Geocoding & search</title>
     <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="weather.css" />
+</head>
+
+<body>
     <button class="button" id="search-by-location">Search by distance</button>
     <button class="button" id="search-by-price">Search by price</button>
     <button class="button" id="search-by-rating">Search by rating</button>
+    <button class="button" id="get-temp">Weather</button>
+
     <div id="map"></div>
 
-    <input id="filterValue" type="text"/>
+    <input id="filterValue" type="text" />
     <button id="filterBy">Filter</button>
 
     <div id="restaurant-returned"></div>
 
     <div id="modal-restaurant-info" class="modal">
-      <button class="close-modal" id="close-modal">CLOSE</button>
-      <div id="modal-content"></div>
+        <button class="close-modal" id="close-modal">CLOSE</button>
+        <div id="modal-content"></div>
     </div>
     <div id="overlay"></div>
-  </body>
-  <script
-    defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"
-  ></script>
-  <script type="text/javascript" src="script.js"></script>
+    <div id="id01" class="modal-weather">
+        <div class="modal-content-weather">
+            <div class="display-block"><span class="close-button-weather">&times;</span></div>
+            <div class="display-block">
+                <p id="weatherReport"></p>
+                <p id="temperature"></p>
+                <p id="real-feel"></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"></script>
+<script type="text/javascript" src="script.js"></script>
 
 </html>
