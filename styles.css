@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -9,21 +9,16 @@
   margin-bottom: 20px;
 }
 
-.main-content{
+.main-content {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-.search-buttons{
+.search-buttons {
   display: flex;
   justify-content: center;
   margin: 12px;
-}
-
-.filter{
-  display: flex;
-  justify-content: center;
 }
 
 .restaurant-card {
@@ -132,18 +127,18 @@
     padding: 5px;
     width: 45%;
   }
-  #restaurant-returned{
+  #restaurant-returned {
     display: flex;
     justify-items: center;
     flex-flow: row wrap;
     width: 750px;
     justify-content: space-around;
   }
-  .search-buttons{
+  .search-buttons {
     display: flex;
     justify-content: center;
   }
-  .main-content{
+  .main-content {
     display: flex;
     justify-content: center;
     flex-flow: column;
@@ -152,11 +147,18 @@
     margin-right: auto;
     margin-left: auto;
   }
-  .filter{
+  .filters {
+    margin-bottom: 10px;
+    display: none;
+  }
+  
+  .filters-open {
     display: flex;
     justify-content: center;
   }
-  .body{
+  
+  }
+  .body {
     background-color: #ddd;
   }
 }
@@ -172,18 +174,18 @@
     padding: 5px;
     width: 30%;
   }
-  #restaurant-returned{
+  #restaurant-returned {
     display: flex;
     justify-items: center;
     flex-flow: row wrap;
     width: 100%;
     justify-content: space-around;
   }
-  .search-buttons{
+  .search-buttons {
     display: flex;
     justify-content: center;
   }
-  .main-content{
+  .main-content {
     display: flex;
     justify-content: center;
     flex-flow: column;
@@ -192,21 +194,18 @@
     margin-right: auto;
     margin-left: auto;
   }
-  .filter{
+  .filters {
+    margin-bottom: 10px;
+    display: none;
+  }
+  
+  .filters-open {
     display: flex;
     justify-content: center;
   }
-  .body{
+  
+  .body {
     background-color: #ddd;
   }
-}
-
-.filters {
-  margin-bottom: 10px;
-  display: none;
-}
-
-.filters-open {
-  display: block;
 }
 
