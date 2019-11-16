@@ -19,8 +19,7 @@ function initMap() {
         location.long = pos.coords.longitude;
         map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: location.lat, lng: location.long },
-            zoom: 11
-
+            zoom: 15
         });
 
         currentLat = location.lat;
@@ -117,6 +116,9 @@ searchRating.addEventListener(`click`, () => {
 
 
 function createRestaurantsNodes(restaurants) {
+
+    let restaurantBounds = new google.maps.LatLngBounds();
+
     restaurants.map(({ restaurant }) => {
         const {
             name,
@@ -135,10 +137,12 @@ function createRestaurantsNodes(restaurants) {
             let restaurantLat = Number(restaurant.location.latitude)
             let restaurantLong = Number(restaurant.location.longitude)
 
-            let restaurantLocation = { lat: restaurantLat, lng: restaurantLong };
-
             let image = 'http://maps.google.com/mapfiles/kml/pal2/icon40.png';
-            let restaurantMarker = new google.maps.Marker({ position: restaurantLocation, map: map, icon: image });
+            
+            let restaurantLatLng = new google.maps.LatLng({ lat: restaurantLat, lng: restaurantLong });
+            let restaurantMarker = new google.maps.Marker({ position: restaurantLatLng, map: map, icon: image });
+
+            restaurantBounds.extend(restaurantLatLng);
             restaurantMarkers.push(restaurantMarker);
         };
 
@@ -165,6 +169,9 @@ function createRestaurantsNodes(restaurants) {
     `;
         restaurantsReturned.innerHTML += restaurantNode;
     });
+
+    map.fitBounds(restaurantBounds);
+    map.setCenter(restaurantBounds.getCenter());
 }
 
 const filterBy = document.querySelector("#filterBy");
