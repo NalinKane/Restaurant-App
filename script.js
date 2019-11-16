@@ -169,6 +169,7 @@ function createRestaurantsNodes(restaurants) {
 
    map.fitBounds(restaurantBounds);
    map.setCenter(restaurantBounds.getCenter());
+   filters.classList.add("filters-open");
 }
 
 const filterBy = document.querySelector("#filterBy");
