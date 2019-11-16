@@ -175,7 +175,6 @@ filterBy.addEventListener("click", () => {
   const cuisine = filterInput.value;
 
   const filtered = filterRestaurantBy(cuisine);
-  console.log(`I've found ${filtered.length} ${cuisine} restaurants`, filtered);
 
   restaurantsReturned.innerHTML = "";
   createRestaurantsNodes(filtered);
