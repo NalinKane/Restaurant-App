@@ -13,15 +13,15 @@ let allRestaurants = [];
 let restaurantMarkers = [];
 
 function initMap() {
-  let location = new Object();
-  navigator.geolocation.getCurrentPosition(function(pos) {
-    location.lat = pos.coords.latitude;
-    location.long = pos.coords.longitude;
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: location.lat, lng: location.long },
-      zoom: 11
-    });
 
+    let location = new Object();
+    navigator.geolocation.getCurrentPosition(function(pos) {
+        location.lat = pos.coords.latitude;
+        location.long = pos.coords.longitude;
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: location.lat, lng: location.long },
+            zoom: 15,
+        });
     currentLat = location.lat;
     currentLong = location.long;
     var currentLocation = { lat: location.lat, lng: location.long };
@@ -113,38 +113,39 @@ searchRating.addEventListener(`click`, () => {
 });
 
 function createRestaurantsNodes(restaurants) {
-  const filters = document.querySelector(".filters");
-  restaurants.map(({ restaurant }) => {
-    const {
-      name,
-      featured_image,
-      cuisines,
-      average_cost_for_two,
-      location,
-      timings,
-      phone_numbers,
-      user_rating,
-      id
-    } = restaurant;
+    const filters = document.querySelector(".filters");
+    let restaurantBounds = new google.maps.LatLngBounds();
 
-    function setMarkers(map, location) {
-      let restaurantLat = Number(restaurant.location.latitude);
-      let restaurantLong = Number(restaurant.location.longitude);
+    restaurants.map(({ restaurant }) => {
+        const {
+            name,
+            featured_image,
+            cuisines,
+            average_cost_for_two,
+            location,
+            timings,
+            phone_numbers,
+            user_rating,
+            id
+        } = restaurant;
 
-      let restaurantLocation = { lat: restaurantLat, lng: restaurantLong };
+        function setMarkers(map, location) {
 
-      let image = "http://maps.google.com/mapfiles/kml/pal2/icon40.png";
-      let restaurantMarker = new google.maps.Marker({
-        position: restaurantLocation,
-        map: map,
-        icon: image
-      });
-      restaurantMarkers.push(restaurantMarker);
-    }
+            let restaurantLat = Number(restaurant.location.latitude)
+            let restaurantLong = Number(restaurant.location.longitude)
 
-    setMarkers(map, location);
+            let image = 'http://maps.google.com/mapfiles/kml/pal2/icon40.png';
+            
+            let restaurantLatLng = new google.maps.LatLng({ lat: restaurantLat, lng: restaurantLong });
+            let restaurantMarker = new google.maps.Marker({ position: restaurantLatLng, map: map, icon: image });
 
-    const restaurantNode = `
+            restaurantBounds.extend(restaurantLatLng);
+            restaurantMarkers.push(restaurantMarker);
+        };
+
+        setMarkers(map, location);
+
+        const restaurantNode = `
             <div class="restaurant-card" id="restaurant-${id}">
             <img src="${featured_image}" class="photo" title="Photo of ${name}" />
                 <div class="content">
@@ -163,9 +164,12 @@ function createRestaurantsNodes(restaurants) {
                 </div>
             </div>
     `;
-    restaurantsReturned.innerHTML += restaurantNode;
-  });
-  filters.classList.add("filters-open");
+        restaurantsReturned.innerHTML += restaurantNode;
+    });
+
+   map.fitBounds(restaurantBounds);
+   map.setCenter(restaurantBounds.getCenter());
+   filters.classList.add("filters-open");
 }
 
 const filterBy = document.querySelector("#filterBy");
