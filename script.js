@@ -126,7 +126,8 @@ function createRestaurantsNodes(restaurants) {
             timings,
             phone_numbers,
             user_rating,
-            id
+            id,
+            url,
         } = restaurant;
 
         function setMarkers(map, location) {
@@ -147,7 +148,9 @@ function createRestaurantsNodes(restaurants) {
 
         const restaurantNode = `
             <div class="restaurant-card" id="restaurant-${id}">
-            <img src="${featured_image}" class="photo" title="Photo of ${name}" />
+            <a href="${url}">
+              <img src="${featured_image}" class="photo" title="Photo of ${name}" />
+            </a>
                 <div class="content">
                     <h2 class="card-text card-title">${name}</h2>
                     <p class="card-text phone">Call on : ${phone_numbers}</p>
