@@ -1,52 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Restaurant search</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="weather.css" />
-  </head>
-  <body>
+
+</head>
+
+<body>
     <div class="main-content">
-      <div class="search-buttons">
-        <button class="button" id="search-by-location">
+        <div class="search-buttons">
+            <button class="button" id="search-by-location">
           Search by distance
         </button>
-        <button class="button" id="search-by-price">Search by price</button>
-        <button class="button" id="search-by-rating">Search by rating</button>
-        <button class="button" id="get-temp">Weather</button>
-      </div>
-      <div id="map"></div>
-      <div class="filters">
-        <input id="filterValue" type="text" placeholder="e.g. indian" />
-        <button id="filterBy" class="button">Filter by cuisine</button>
-      </div>
-      <div id="restaurant-returned"></div>
-      <div id="modal-restaurant-info" class="modal">
-        <button class="button" id="close-modal">X</button>
-        <div id="modal-content"></div>
-      </div>
-      <div id="overlay"></div>
+            <button class="button" id="search-by-price">Search by price</button>
+            <button class="button" id="search-by-rating">Search by rating</button>
+            <button class="button" id="get-temp">Weather</button>
+        </div>
+        <div id="map"></div>
+        <div class="filters">
+            <input id="filterValue" type="text" placeholder="e.g. indian" />
+            <button id="filterBy" class="button">Filter by cuisine</button>
+        </div>
+        <div id="restaurant-returned"></div>
+        <div id="modal-restaurant-info" class="modal">
+            <button class="button" id="close-modal">X</button>
+            <div id="modal-content"></div>
+        </div>
+        <div id="overlay"></div>
     </div>
     <div id="overlay"></div>
-    <div id="id01" class="modal-weather">
-      <div class="modal-content-weather">
-        <div class="display-block">
-          <span class="close-button-weather">&times;</span>
-        </div>
-        <div class="display-block">
-          <p id="weatherReport"></p>
-          <p id="temperature"></p>
-          <p id="real-feel"></p>
-        </div>
-      </div>
+    <div id="modal-content-weather" class="modal">
+        <button id="close-button-weather" class="button">X</button>
+        <p id="temperature"><strong></strong></p>
+        <p id="real-feel"></p>
     </div>
-  </body>
-  <script
-    defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"
-  ></script>
-  <script type="text/javascript" src="script.js"></script>
+    </div>
+</body>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"></script>
+<script type="text/javascript" src="script.js"></script>
+
 </html>
