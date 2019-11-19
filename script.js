@@ -11,6 +11,7 @@ let currentLong;
 
 let allRestaurants = [];
 let restaurantMarkers = [];
+let restaurantInfowindows = [];
 
 function initMap() {
 
@@ -25,7 +26,6 @@ function initMap() {
         currentLat = location.lat;
         currentLong = location.long;
         var currentLocation = { lat: location.lat, lng: location.long };
-        const searchButton = document.querySelector("#search-by-location");
         var marker = new google.maps.Marker({
             position: currentLocation,
             map: map
@@ -140,6 +140,15 @@ function createRestaurantsNodes(restaurants) {
             let restaurantLatLng = new google.maps.LatLng({ lat: restaurantLat, lng: restaurantLong });
             let restaurantMarker = new google.maps.Marker({ position: restaurantLatLng, map: map, icon: image });
 
+            let restaurantInfowindow = new google.maps.InfoWindow();
+            
+            google.maps.event.addListener(restaurantMarker, 'click', (function(restaurantMarker) {
+              return function() {
+                restaurantInfowindow.setContent(restaurant.name);
+                restaurantInfowindow.open(map, restaurantMarker);
+              }
+            })(restaurantMarker));
+
             restaurantBounds.extend(restaurantLatLng);
             restaurantMarkers.push(restaurantMarker);
         };
@@ -167,6 +176,7 @@ function createRestaurantsNodes(restaurants) {
                 </div>
             </div>
     `;
+    
         restaurantsReturned.innerHTML += restaurantNode;
     });
 
