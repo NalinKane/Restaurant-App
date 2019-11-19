@@ -18,8 +18,8 @@ Additionally, the client can view the weather in the area (temperature, the stat
 
 ![Image of the Restaurant Search Desktop Version](Project-1-Desktop.png)
 
-## Technologies used
+## Services used
 
 - Zomato API
-- Google Maps
+- Google Maps API
 - Weather API
