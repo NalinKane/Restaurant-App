@@ -1,11 +1,23 @@
 const searchDistance = document.querySelector(`#search-by-location`);
 const searchPrice = document.querySelector(`#search-by-price`);
 const searchRating = document.querySelector(`#search-by-rating`);
+
 const restaurantsReturned = document.querySelector(`#restaurant-returned`);
 const restaurantInfoModal = document.querySelector("#modal-restaurant-info");
 const modalToggle = document.querySelector("#open-modal");
 const modalClose = document.querySelector("#close-modal");
 const overlay = document.querySelector("#overlay");
+const modalContent = document.querySelector("#modal-content");
+const filters = document.querySelector(".filters");
+const filterBy = document.querySelector("#filterBy");
+const filterInput = document.querySelector("#filterValue");
+
+let weatherBtn = document.querySelector(`#get-temp`);
+let modalW = document.querySelector("#modal-content-weather");
+let closeBtn = document.querySelector("#close-button-weather");
+const tempElement = document.querySelector(`#temperature`);
+const realFeel = document.querySelector("#real-feel");
+
 let currentLat;
 let currentLong;
 
@@ -21,7 +33,7 @@ function initMap() {
         location.long = pos.coords.longitude;
         map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: location.lat, lng: location.long },
-            zoom: 15,
+            zoom: 16,
         });
         currentLat = location.lat;
         currentLong = location.long;
@@ -39,10 +51,11 @@ function clearResults() {
             restaurantsReturned.removeChild(restaurantsReturned.firstChild);
         }
     }
-    for (let i = 0; i < restaurantMarkers.length; i++) {
-        restaurantMarkers[i].setMap(null);
-    }
+    // for (let i = 0; i < restaurantMarkers.length; i++) {
+    //     restaurantMarkers[i].setMap(null);
+    // }
 }
+restaurantMarkers.forEach(restaurantMarker => restaurantMarkers[i].setMap(null))
 
 function openModal(event) {
     const targetID = event.target.getAttribute("data-id");
@@ -62,7 +75,7 @@ function openModal(event) {
 function closeModal(event) {
     event.preventDefault();
     restaurantInfoModal.classList.remove("modal-open");
-    const modalContent = document.querySelector("#modal-content");
+    
     modalContent.innerHTML = "";
     overlay.classList.remove("overlay-open");
 }
@@ -113,7 +126,7 @@ searchRating.addEventListener(`click`, () => {
 });
 
 function createRestaurantsNodes(restaurants) {
-    const filters = document.querySelector(".filters");
+    
     let restaurantBounds = new google.maps.LatLngBounds();
 
     restaurants.map(({ restaurant }) => {
@@ -157,14 +170,14 @@ function createRestaurantsNodes(restaurants) {
 
         const restaurantNode = `
             <div class="restaurant-card" id="restaurant-${id}">
-            <a href="${url}">
-              <img src="${featured_image}" class="photo" title="Photo of ${name}" />
+            <a class="img-area" href="${url}">
+              <img src="${featured_image}" class="photo" title="Photo of ${name}" onerror="this.src='Assets/default.png'" />
             </a>
                 <div class="content">
                     <h2 class="card-text card-title">${name}</h2>
                     <p class="card-text phone">Call on : ${phone_numbers}</p>
                     <p class="card-text rating">Avg.Rating ${user_rating.aggregate_rating}</p>
-                    <button class="open-more-info button" data-id="restaurant-${id}">View more</button>
+                    <button class="open-more-info btn" data-id="restaurant-${id}">View more</button>
                 </div>
                 <div class="restaurant-info">
                     <div class="inside-restaurant-info">
@@ -185,10 +198,8 @@ function createRestaurantsNodes(restaurants) {
     filters.classList.add("filters-open");
 }
 
-const filterBy = document.querySelector("#filterBy");
-
 filterBy.addEventListener("click", () => {
-    const filterInput = document.querySelector("#filterValue");
+    
     const cuisine = filterInput.value;
 
     const filtered = filterRestaurantBy(cuisine);
@@ -205,9 +216,6 @@ function filterRestaurantBy(cuisine) {
 }
 
 // weather events
-let weatherBtn = document.querySelector(`#get-temp`);
-let modalW = document.querySelector("#modal-content-weather");
-let closeBtn = document.querySelector("#close-button-weather");
 
 closeBtn.addEventListener("click", closeWeatherModal);
 
@@ -224,8 +232,7 @@ weatherBtn.addEventListener("click", event => {
         .then(response => response.json())
         .then(response => {
 
-            const tempElement = document.querySelector(`#temperature`);
-            const realFeel = document.querySelector("#real-feel");
+            
             const weather = response.response.ob.tempC
             const climate = response.response.ob.weather.toLowerCase()
             const windChill = response.response.ob.windchillC;
