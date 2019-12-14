@@ -7,6 +7,7 @@ const restaurantInfoModal = document.querySelector("#modal-restaurant-info");
 const modalToggle = document.querySelector("#open-modal");
 const modalClose = document.querySelector("#close-modal");
 const overlay = document.querySelector("#overlay");
+
 const modalContent = document.querySelector("#modal-content");
 const filters = document.querySelector(".filters");
 const filterBy = document.querySelector("#filterBy");
@@ -17,6 +18,8 @@ let modalW = document.querySelector("#modal-content-weather");
 let closeBtn = document.querySelector("#close-button-weather");
 const tempElement = document.querySelector(`#temperature`);
 const realFeel = document.querySelector("#real-feel");
+
+const zomApiKey ='969dccb114a560b6d4df35b25a8e6418';
 
 let currentLat;
 let currentLong;
@@ -37,8 +40,8 @@ function initMap() {
         });
         currentLat = location.lat;
         currentLong = location.long;
-        var currentLocation = { lat: location.lat, lng: location.long };
-        var marker = new google.maps.Marker({
+        let currentLocation = { lat: location.lat, lng: location.long };
+        let marker = new google.maps.Marker({
             position: currentLocation,
             map: map
         });
@@ -55,6 +58,7 @@ function clearResults() {
     //     restaurantMarkers[i].setMap(null);
     // }
 }
+
 restaurantMarkers.forEach(restaurantMarker => restaurantMarkers[i].setMap(null))
 
 function openModal(event) {
@@ -92,7 +96,7 @@ overlay.addEventListener("click", closeModal);
 searchDistance.addEventListener(`click`, event => {
     clearResults();
     fetch(
-            `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=real-distance`
+            `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=${zomApiKey}&sort=real-distance`
         )
         .then(response => response.json())
         .then(({ restaurants }) => {
@@ -104,7 +108,7 @@ searchDistance.addEventListener(`click`, event => {
 searchPrice.addEventListener(`click`, () => {
     clearResults();
     fetch(
-            `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=cost`
+            `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=${zomApiKey}&sort=cost`
         )
         .then(response => response.json())
         .then(({ restaurants }) => {
@@ -116,7 +120,7 @@ searchPrice.addEventListener(`click`, () => {
 searchRating.addEventListener(`click`, () => {
     clearResults();
     fetch(
-            `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=969dccb114a560b6d4df35b25a8e6418&sort=rating`
+            `https://developers.zomato.com/api/v2.1/search?lat=${currentLat}&lon=${currentLong}&apikey=${zomApiKey}&sort=rating`
         )
         .then(response => response.json())
         .then(({ restaurants }) => {
