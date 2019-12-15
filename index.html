@@ -5,42 +5,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Restaurant search</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>ProJect FooD</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="knife-and-fork.png">
 
 </head>
 
 <body>
     <div class="main-content">
-        <div class="search-buttons">
-            <button class="button" id="search-by-location">
-          Search by distance
-        </button>
-            <button class="button" id="search-by-price">Search by price</button>
-            <button class="button" id="search-by-rating">Search by rating</button>
-            <button class="button" id="get-temp">Weather</button>
-        </div>
+        <header class="search-buttons">
+
+            <div class="nav-brand">
+                <span>P</span>roject<span>F</span>ood
+            </div>
+
+            <!-- <a class="burger-btn"><i class="fas fa-hamburger fa-2x burger-btn"></i></a> -->
+
+            <nav class="nav-bar">
+
+                <ul class="inner-nav">
+                    <!-- <li><a class="top-button">Search...</a></li> -->
+                    <li><a class="nav-btn" id="search-by-location">Distance</a></li>
+                    <li><a class="nav-btn" id="search-by-price">Price</a></li>
+                    <li><a class="nav-btn" id="search-by-rating">Rating</a></li>
+                    <li><a class="nav-btn" id="get-temp">Weather?</a></li>
+                </ul>
+                
+            </nav>
+                
+        </header>
+
         <div id="map"></div>
-        <div class="filters">
-            <input id="filterValue" type="text" placeholder="e.g. indian" />
-            <button id="filterBy" class="button">Filter by cuisine</button>
-        </div>
+
+        <ul class="filters">
+            <li class="filter-list"><input id="filterValue" type="text" placeholder="e.g. indian" /></li>
+            <li class="filter-list"><button id="filterBy" class="btn">Pick Cuisine</button></li>
+        </ul>
+
         <div id="restaurant-returned"></div>
+
         <div id="modal-restaurant-info" class="modal">
-            <button class="button" id="close-modal">X</button>
             <div id="modal-content"></div>
+            <button class="btn" id="close-modal">CLOSE</button>
         </div>
+
         <div id="overlay"></div>
     </div>
+
     <div id="overlay"></div>
+
     <div id="modal-content-weather" class="modal">
-        <button id="close-button-weather" class="button">X</button>
         <p id="temperature"><strong></strong></p>
         <p id="real-feel"></p>
+        <button id="close-button-weather" class="btn">CLOSE</button>
     </div>
     </div>
 </body>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs0DXvW7g88kD3-OS7i4HXHzl_oPAP1LQ&callback=initMap"></script>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="./javascript/script.js"></script>
 
 </html>
