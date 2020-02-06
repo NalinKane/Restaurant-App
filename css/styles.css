@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: cadetblue;
+  background-color: #a05f5f;
 }
 
 .main-content {
@@ -18,6 +18,7 @@ body {
 .search-buttons {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   margin-top: 30px;
 }
@@ -55,11 +56,10 @@ body {
 .nav-bar {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-align: center;
+  align-items: center;
   height: 80px;
   margin: auto;
-  padding: 0;
   color: #fff;
   width: 100%;
 }
@@ -67,15 +67,15 @@ body {
 .inner-nav {
   overflow: hidden;
   /* height: 0; */
+  height: 2em;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
   width: 100%;
-  
+  margin: auto 0;
   text-align: center;
   list-style: none;
   font-size: 20px;
-  margin: auto;
-  padding: 0;
 }
 
 .inner-nav .open {
@@ -90,7 +90,6 @@ body {
   text-align: center;
   border: 1px solid transparent;
   border-radius: 10px;
-  margin: 5px;
   padding: 5px;
   vertical-align: middle;
   font-size: 14px;
@@ -154,6 +153,11 @@ body {
   justify-content: center;
 }
 
+#restaurant-returned {
+  width: 95%;
+  margin: 0 auto;
+}
+
 .restaurant-card {
   display: flex;
   padding: 1em 0;
@@ -201,22 +205,28 @@ body {
 
 .modal {
   display: none;
-  background: linear-gradient(-128deg, rgba(215, 151, 25, 0.93) 3%, rgba(193, 35, 124, 0.93) 88%, rgba(162, 12, 117, 0.93) 100%);
-  width: 80%;
+  background: #a20c75ed;
+  /* background: linear-gradient(-128deg, #d79719ed 3%, #c1237ced 88%, #a20c75ed 100%); */
+  width: 600px;
+  max-width: 80%;
   height: auto;
-  margin: 25px;
+  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0px 0 15px -2px #666;
   padding: 1em;
   position: fixed;
-  top: 40%;
-  left: 40%;
-  transform: translate(-40%, -40%);
-  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
   text-align: center;
   font-family: 'Merriweather Sans', sans-serif;
   color: #fff;
   line-height: 40px;
+}
+
+#modal-restaurant-info .modal .modal-open {
+  margin: auto;
 }
 
 .inside-restaurant-info {
@@ -234,10 +244,11 @@ body {
   font-size: 14px;
   padding: 0.5em;
 }
+
 #overlay {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #00000080;
   position: fixed;
   top: 0;
   left: 0;
@@ -249,11 +260,6 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-
-  body {
-    /* id=f device width >= then do this */
-    background-color: crimson;
-  }
 
   .nav-bar {
     width: 60%;
@@ -340,10 +346,6 @@ body {
 
 @media screen and (min-width: 992px) {
 
-  body {
-    background-color: rgb(160, 95, 95);
-  }
-
   .nav-bar {
     width: 60%;
   }
@@ -388,7 +390,7 @@ body {
     display: flex;
     justify-items: center;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
     justify-content: space-around;
   }
 

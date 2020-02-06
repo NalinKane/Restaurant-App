@@ -1,4 +1,4 @@
-# Project-1 Restaurant Search
+# Project-1 Project Food
 
 ## About the app
 
@@ -12,11 +12,11 @@ Additionally, the client can view the weather in the area (temperature, the stat
 
 ### Mobile version screenshot
 
-![Image of the Restaurant Search Mobile Version](Project-1-Mobile.png)
+![Image of the Restaurant Search Mobile Version](./Assets/mobile.png)
 
 ### Desktop version screenshot
 
-![Image of the Restaurant Search Desktop Version](Project-1-Desktop.png)
+![Image of the Restaurant Search Desktop Version](./Assets/desktop.png)
 
 ## Services used
 

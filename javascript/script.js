@@ -192,7 +192,7 @@ function createRestaurantsNodes(restaurants) {
                     </div>
                 </div>
             </div>
-    `;
+        `;
     
         restaurantsReturned.innerHTML += restaurantNode;
     });
